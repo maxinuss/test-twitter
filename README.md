@@ -91,7 +91,7 @@ Base url: ``` http://localhost:8030 ```
 ###### Get tweets
 Get last 10 tweets from account. 
 
-[POST] ```/tweet/list```
+[GET] ```/tweet/list```
 
 Response:
 ```json
