@@ -4,7 +4,7 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 // Boot application
-(new \Dotenv\Dotenv(''))->load();
+(new \Dotenv\Dotenv(__DIR__ . '/../'))->load();
 // Instantiate the app
 $app = new class() extends \DI\Bridge\Slim\App {
     protected function configureContainer(\DI\ContainerBuilder $builder) {

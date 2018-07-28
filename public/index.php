@@ -5,7 +5,6 @@ require __DIR__ . '/../vendor/autoload.php';
 // Load environment variables
 try {
     (new \Dotenv\Dotenv(__DIR__ . '/../'))->load();
-    //(new \Dotenv\Dotenv('.'))->load();
 } catch (\Dotenv\Exception\InvalidPathException $e) {
     die('.env file not found!');
 }
