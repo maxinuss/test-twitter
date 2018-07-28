@@ -53,7 +53,7 @@ In order to run this project you will need:
 * PHP 7.2 (FPM)
 * MySQL
 
-For convenience, a *Makefile* is included, so you can run these commands to start and stop all containers at once.
+If you use Linux a *Makefile* is included, so you can run these commands to start and stop all containers at once.
 Go to project root and run:
 
 To start docker
@@ -68,9 +68,17 @@ make down
 
 #### First time instructions:
 
+######  Linux
 1) Install Docker and Docker compose
 2) In project root execute ``` make up ``` 
 3) In project root execute ``` make php ``` and go inside php docker.
+4) Execute ``` composer install```
+5) Apply database dump ``` php bin/console orm:schema-tool:update --force ```
+
+######  Windows 10
+1) Install Docker
+2) In project root execute ``` docker-compose up -d ``` 
+3) In project root execute ``` docker exec -it php-maxinuss-container bash ``` and go inside php docker.
 4) Execute ``` composer install```
 5) Apply database dump ``` php bin/console orm:schema-tool:update --force ```
 
