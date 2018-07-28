@@ -17,6 +17,11 @@ class Tweet
     private $id;
 
     /**
+     * @var string
+     */
+    private $userName;
+
+    /**
      * @var \DateTime
      */
     private $createdAt;
@@ -72,6 +77,24 @@ class Tweet
     public function setText(string $text) : Tweet
     {
         $this->text = $text;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserName() : string
+    {
+        return $this->userName;
+    }
+
+    /**
+     * @param string $userName
+     * @return Tweet
+     */
+    public function setUserName(string $userName) : Tweet
+    {
+        $this->userName = $userName;
         return $this;
     }
 

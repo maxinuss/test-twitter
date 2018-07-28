@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Tweets\Infrastructure\Domain\Model\Tweet;
 
-use Doctrine\DBAL\Exception\TableNotFoundException;
 use Tweets\Domain\Model\Tweet\Tweet;
 use Tweets\Domain\Model\Tweet\TweetRepository;
 use Tweets\Infrastructure\Domain\Model\DoctrineMysqlRepository;

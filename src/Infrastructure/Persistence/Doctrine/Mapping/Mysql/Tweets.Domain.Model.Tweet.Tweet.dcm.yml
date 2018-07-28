@@ -15,6 +15,12 @@ Tweets\Domain\Model\Tweet\Tweet:
       options:
         unsigned: true
   fields:
+      userName:
+        type: string
+        column: user_name
+        length: 250
+        nullable: false
+
       text:
         type: string
         column: name
