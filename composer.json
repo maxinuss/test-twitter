@@ -9,6 +9,7 @@
         "vlucas/phpdotenv": "^2.4",
         "doctrine/orm": "^2.5.5",
         "symfony/console": "^3.3",
+        "league/fractal": "^0.16.0",
         "php-di/slim-bridge": "^1.0",
         "mockery/mockery": "^1.0"
     },

@@ -15,7 +15,7 @@ Build an endpoint that returns an array with the last 10 tweets of a twitter acc
      }
 }
 ```
-####Params:
+#### Response fields:
 ```
 created_at : obligatorio
 text: obligatorio
@@ -70,17 +70,19 @@ make down
 
 ######  Linux
 1) Install Docker and Docker compose
-2) In project root execute ``` make up ``` 
-3) In project root execute ``` make php ``` and go inside php docker.
-4) Execute ``` composer install```
-5) Apply database dump ``` php bin/console orm:schema-tool:update --force ```
+2) Create .env file using .env.example info (Modify paths if needed)
+3) In project root execute ``` make up ``` 
+4) In project root execute ``` make php ``` and go inside php docker.
+5) Execute ``` composer install```
+6) Apply database dump ``` php bin/console orm:schema-tool:update --force ```
 
 ######  Windows 10
 1) Install Docker
-2) In project root execute ``` docker-compose up -d ``` 
-3) In project root execute ``` docker exec -it php-maxinuss-container bash ``` and go inside php docker.
-4) Execute ``` composer install```
-5) Apply database dump ``` php bin/console orm:schema-tool:update --force ```
+2) Create .env file using .env.example info (Modify paths if needed)
+3) In project root execute ``` docker-compose up -d ``` 
+4) In project root execute ``` docker exec -it php-maxinuss-container bash ``` and go inside php docker.
+5) Execute ``` composer install```
+6) Apply database dump ``` php bin/console orm:schema-tool:update --force ```
 
 #### Endpoints
 

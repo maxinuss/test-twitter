@@ -1,0 +1,35 @@
+Tweets\Domain\Model\Tweet\Tweet:
+  type: entity
+  table: tweet
+  indexes:
+    created_at_index:
+      columns: [ created_at ]
+
+  id:
+    id:
+      type: integer
+      length: 10
+      id: true
+      generator:
+        strategy: AUTO
+      options:
+        unsigned: true
+  fields:
+      text:
+        type: string
+        column: name
+        length: 250
+        nullable: false
+
+      createdAt:
+        type: datetime
+        column: created_at
+        nullable: false
+
+  manyToOne:
+    inReply:
+      targetEntity: \Tweets\Domain\Model\Tweet\Tweet
+      inversedBy: tweet
+      joinColumn:
+        name: in_reply_id
+        referencedColumnName: id
