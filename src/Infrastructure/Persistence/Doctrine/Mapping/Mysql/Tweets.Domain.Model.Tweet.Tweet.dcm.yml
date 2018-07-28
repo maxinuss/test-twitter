@@ -23,7 +23,7 @@ Tweets\Domain\Model\Tweet\Tweet:
 
       text:
         type: string
-        column: name
+        column: text
         length: 250
         nullable: false
 
