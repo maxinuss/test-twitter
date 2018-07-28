@@ -28,7 +28,8 @@ Tweets\Domain\Model\Tweet\Tweet:
         nullable: false
 
       createdAt:
-        type: datetime
+        type: integer
+        length: 10
         column: created_at
         nullable: false
 

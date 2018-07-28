@@ -75,6 +75,10 @@ make down
 4) In project root execute ``` make php ``` and go inside php docker.
 5) Execute ``` composer install```
 6) Apply database dump ``` php bin/console orm:schema-tool:update --force ```
+7) Execute ``` make mysql ``` and go inside php docker.
+8) Execute ``` mysql -p ``` when ask for password use root
+9) Select testing_twitter database
+10) Copy script from /docker/mysql/sql/init.sql and run it from console
 
 ######  Windows 10
 1) Install Docker
@@ -83,6 +87,10 @@ make down
 4) In project root execute ``` docker exec -it php-maxinuss-container bash ``` and go inside php docker.
 5) Execute ``` composer install```
 6) Apply database dump ``` php bin/console orm:schema-tool:update --force ```
+7) Execute ``` docker exec -it mysql-maxinuss-container bash ``` and go inside php docker.
+8) Execute ``` mysql -p ``` when ask for password use root
+9) Select testing_twitter database
+10) Copy script from /docker/mysql/sql/init.sql and run it from console
 
 #### Endpoints
 

@@ -1,0 +1,12 @@
+INSERT INTO tweet (id, user_name, text, created_at, in_reply_id) VALUES (1, 'john doe', 'texto de un tweet', 1532524254, null);
+INSERT INTO tweet (id, user_name, text, created_at, in_reply_id) VALUES (2, 'john doe', 'otro tweet', 1532527854, null);
+INSERT INTO tweet (id, user_name, text, created_at, in_reply_id) VALUES (3, 'pedro', 'tweet number 3', 1532614254, null);
+INSERT INTO tweet (id, user_name, text, created_at, in_reply_id) VALUES (4, 'juan', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 1532625054, 3);
+INSERT INTO tweet (id, user_name, text, created_at, in_reply_id) VALUES (5, 'felipe', 'Nulla nec libero faucibus, vulputate odio in, aliquam sem. ', 1532632254, 3);
+INSERT INTO tweet (id, user_name, text, created_at, in_reply_id) VALUES (6, 'felipe', 'Vivamus tempor velit vel nisl efficitur, vel volutpat augue interdum.', 1532718654, 3);
+INSERT INTO tweet (id, user_name, text, created_at, in_reply_id) VALUES (7, 'felipe', 'Suspendisse felis dui, auctor eu dui a, laoreet iaculis dui. ', 1532805054, 5);
+INSERT INTO tweet (id, user_name, text, created_at, in_reply_id) VALUES (8, 'marcelo', 'Aenean luctus laoreet nulla, nec sodales ligula consequat nec. Nunc nec tempor urna, sed pretium leo.', 1532808654, 5);
+INSERT INTO tweet (id, user_name, text, created_at, in_reply_id) VALUES (9, 'joaquin', 'Nam ac tellus vitae nisl hendrerit tempus', 1532812254, 6;
+INSERT INTO tweet (id, user_name, text, created_at, in_reply_id) VALUES (10, 'oliver', ' Fusce commodo diam at lectus accumsan, at ultrices leo laoreet. Suspendisse lobortis, libero at pellentesque gravida, mi odio posuere orci, at tempus turpis risus ac tellus.', 1532815854, null);
+INSERT INTO tweet (id, user_name, text, created_at, in_reply_id) VALUES (11, 'john doe', 'Suspendisse potenti. ', 1532817054, null);
+INSERT INTO tweet (id, user_name, text, created_at, in_reply_id) VALUES (12, 'john doe', 'Proin sagittis tortor nec vehicula euismod.', 1532818194, 11);
