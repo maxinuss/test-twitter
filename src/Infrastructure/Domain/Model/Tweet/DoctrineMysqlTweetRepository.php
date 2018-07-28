@@ -11,32 +11,20 @@ use Tweets\Infrastructure\Domain\Model\DoctrineMysqlRepository;
 class DoctrineMysqlTweetRepository extends DoctrineMysqlRepository implements TweetRepository
 {
     /**
-     * @param Tweet $category
+     * @param Tweet $tweet
      */
-    public function add(Tweet $category)
+    public function add(Tweet $tweet)
     {
-        $this->em->persist($category);
+        $this->em->persist($tweet);
     }
 
     /**
-     * @param $category
-     * @return Tweet|null
+     * @param int $quantity
+     * @return mixed
      */
-    public function findById($category)
+    public function findLast(int $quantity = 10)
     {
-        return $this->em->find(Tweet::class, array('id' => $category));
-    }
-
-    /**
-     * @param $active
-     * @return Tweet|null
-     */
-    public function findAll($active)
-    {
-        if($active)
-            return $this->em->getRepository(Tweet::class)->findBy(array('active' => 1), array('id' => 'DESC'));
-        else
-            return $this->em->getRepository(Tweet::class)->findBy(array(), array('id' => 'DESC'));
+        return $this->em->getRepository(Tweet::class)->findBy(array(), array('id' => 'DESC'), $quantity);
     }
 
 }

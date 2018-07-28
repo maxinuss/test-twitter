@@ -1,9 +1,7 @@
 <?php
 declare(strict_types=1);
 
-use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\Cache\CacheProvider;
-use Doctrine\Common\Cache\MemcachedCache;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Setup;
@@ -62,11 +60,6 @@ $container[EntityManagerInterface::class] = function ($c) {
         [__DIR__ . '/Infrastructure/Persistence/Doctrine/Mapping/Mysql'],
         $settings['environment'] == 'development'
     );
-
-    $cacheDriver = $c->get(CacheProvider::class);
-    $configuration->setQueryCacheImpl($cacheDriver);
-    $configuration->setResultCacheImpl($cacheDriver);
-
     $configuration->setProxyDir($settings['cachePath'] . '/Proxies');
     
     return EntityManager::create($settings['doctrine'], $configuration);
