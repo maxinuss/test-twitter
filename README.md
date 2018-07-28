@@ -83,6 +83,9 @@ make down
 5) Apply database dump ``` php bin/console orm:schema-tool:update --force ```
 
 #### Endpoints
+
+Base url: ``` http://localhost:8030 ```
+
 ###### Get tweets
 Get last 10 tweets from account. 
 
