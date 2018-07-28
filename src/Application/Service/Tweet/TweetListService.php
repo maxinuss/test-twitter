@@ -6,6 +6,10 @@ namespace Tweets\Application\Service\Tweet;
 use Tweets\Domain\Model\Tweet\Tweet;
 use Tweets\Domain\Model\Tweet\TweetRepository;
 
+use Tweets\Infrastructure\Service\JsonTransformer;
+use Tweets\Infrastructure\Transformer\TweetListTransformer;
+use Tweets\Infrastructure\Transformer\InReplyTransformer;
+
 class TweetListService
 {
     /**
@@ -14,12 +18,21 @@ class TweetListService
     private $tweetRepository;
 
     /**
+     * @var JsonTransformer
+     */
+    private $jsonTransformer;
+
+    /**
+     * TweetListService constructor.
      * @param TweetRepository $tweetRepository
+     * @param JsonTransformer $jsonTransformer
      */
     public function __construct(
-        TweetRepository $tweetRepository
+        TweetRepository $tweetRepository,
+        JsonTransformer $jsonTransformer
     ) {
         $this->tweetRepository = $tweetRepository;
+        $this->jsonTransformer = $jsonTransformer;
     }
 
     /**
@@ -27,23 +40,29 @@ class TweetListService
      */
     public function execute()
     {
-        /*try{
-            $category = new Category();
-            $category->setName($request->name());
-            $category->setImage($request->image());
-            $category->setActive($request->active());
+        $tweetsArray = [];
 
-            $this->categoryRepository->add($category);
+        try{
+            $tweets = $this->tweetRepository->findLast(10);
+
+            foreach($tweets as $tweet){
+                if(!empty($tweet->inReply)) {
+                    $tweetsArray[] = array_merge(
+                        $this->jsonTransformer->formatItem($tweet, new TweetListTransformer()),
+                        array('in_reply' => $this->jsonTransformer->formatCollection($tweet->getInReply(), new InReplyTransformer()))
+                    );
+                } else {
+                    $tweetsArray[] = $this->jsonTransformer->formatItem($tweet, new TweetListTransformer());
+                }
+            }
         }catch (\Exception $e) {
             return [
-                'error' => $e
+                'error' => $e->getMessage()
             ];
         }
 
         return [
-            'success' => true
-        ];*/
-
-        return [];
+            $tweetsArray
+        ];
     }
 }
