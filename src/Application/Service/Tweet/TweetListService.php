@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Tweets\Application\Service\Tweet;
 
-use Tweets\Domain\Model\Tweet\Tweet;
+use Tweets\Application\TimezoneHandler;
 use Tweets\Domain\Model\Tweet\TweetRepository;
 use Tweets\Domain\Model\Tweet\TweetConfiguration;
 use Tweets\Infrastructure\Service\JsonTransformer;
@@ -33,11 +33,13 @@ class TweetListService
      * @param TweetRepository $tweetRepository
      * @param TweetConfiguration $tweetConfiguration
      * @param JsonTransformer $jsonTransformer
+     * @param TimezoneHandler $timezoneHandler
      */
     public function __construct(
         TweetRepository $tweetRepository,
         TweetConfiguration $tweetConfiguration,
-        JsonTransformer $jsonTransformer
+        JsonTransformer $jsonTransformer,
+        TimezoneHandler $timezoneHandler
     ) {
         $this->tweetRepository = $tweetRepository;
         $this->tweetConfiguration = $tweetConfiguration;

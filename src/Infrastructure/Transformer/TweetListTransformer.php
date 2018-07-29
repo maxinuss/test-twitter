@@ -15,8 +15,10 @@ class TweetListTransformer extends TransformerAbstract
     public function transform(Tweet $tweet)
     {
         return [
-            'created_at' => $tweet->getCreatedAt()->format('d/m/Y'),
+            'created_at' => $tweet->getFormattedCreatedAt('D M d H:i:s O Y'),
             'text' => $tweet->getText()
         ];
     }
 }
+
+

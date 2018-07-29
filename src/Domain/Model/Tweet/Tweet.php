@@ -2,10 +2,6 @@
 
 namespace Tweets\Domain\Model\Tweet;
 
-use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\PersistentCollection;
-
 /**
  * Category
  */
@@ -22,7 +18,7 @@ class Tweet
     private $userName;
 
     /**
-     * @var \DateTime
+     * @var int
      */
     private $createdAt;
 
@@ -45,18 +41,27 @@ class Tweet
     }
 
     /**
-     * @return \DateTime
+     * @return int
      */
-    public function getCreatedAt() : \DateTime
+    public function getCreatedAt() : int
     {
         return $this->createdAt;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param string $format
+     * @return string
+     */
+    public function getFormattedCreatedAt(string $format) : string
+    {
+        return date($format, $this->createdAt);
+    }
+
+    /**
+     * @param int $createdAt
      * @return Tweet
      */
-    public function setCreatedAt(\DateTime $createdAt) : Tweet
+    public function setCreatedAt(int $createdAt) : Tweet
     {
         $this->createdAt = $createdAt;
         return $this;

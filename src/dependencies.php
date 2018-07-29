@@ -11,6 +11,7 @@ use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
 
 use Tweets\Application\ErrorHandler;
+use Tweets\Application\TimezoneHandler;
 use Tweets\Domain\Model\Tweet\TweetRepository;
 use Tweets\Domain\Model\Tweet\TweetConfiguration;
 use Tweets\Infrastructure\Service\JsonTransformer;
@@ -40,8 +41,16 @@ $container['settings'] = [
     ],
     'tweets' => [
         'quantity' => getenv('TWEETS_QUANTITY')
-    ]
+    ],
+    'timezone' => getenv('TIMEZONE')
 ];
+
+$container[TimezoneHandler::class] = function ($c) {
+    $settings = $c->get('settings');
+    return new TimezoneHandler(
+        $settings['timezone']
+    );
+};
 
 $container[TweetConfiguration::class] = function ($c) {
     $settings = $c->get('settings');
@@ -85,7 +94,6 @@ $container[EntityManagerInterface::class] = function ($c) {
         $settings['environment'] == 'development'
     );
     $configuration->setProxyDir($settings['cachePath'] . '/Proxies');
-    
     return EntityManager::create($settings['doctrine'], $configuration);
 };
 
