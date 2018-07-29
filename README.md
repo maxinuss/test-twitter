@@ -22,7 +22,7 @@ text: obligatorio
 in_reply: si fuese una respuesta a otro usuario.
 ```
 
-####Conditions
+#### Conditions
 
 * The project should be developed using PHP 5.4+
 * If necessary, you can use any web framework of your choice, We recommend SlimPHP
@@ -68,7 +68,7 @@ make down
 
 #### First time instructions:
 
-######  Linux
+###### Linux
 1) Install Docker and Docker compose
 2) Create .env file using .env.example info (Modify paths if needed)
 3) In project root execute ``` make up ``` 
@@ -80,7 +80,7 @@ make down
 9) Select testing_twitter database
 10) Copy script from /docker/mysql/sql/init.sql and run it from console
 
-######  Windows 10
+###### Windows 10
 1) Install Docker
 2) Create .env file using .env.example info (Modify paths if needed)
 3) In project root execute ``` docker-compose up -d ``` 
