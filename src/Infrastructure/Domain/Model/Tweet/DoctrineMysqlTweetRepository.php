@@ -23,7 +23,7 @@ class DoctrineMysqlTweetRepository extends DoctrineMysqlRepository implements Tw
      */
     public function findLast(int $quantity = 10)
     {
-        return $this->em->getRepository(Tweet::class)->findBy(array(), array('id' => 'DESC'), $quantity);
+        return $this->em->getRepository(Tweet::class)->findBy(array(), array('createdAt' => 'DESC'), $quantity);
     }
 
 }
