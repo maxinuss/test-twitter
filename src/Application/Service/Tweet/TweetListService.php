@@ -5,10 +5,11 @@ namespace Tweets\Application\Service\Tweet;
 
 use Tweets\Domain\Model\Tweet\Tweet;
 use Tweets\Domain\Model\Tweet\TweetRepository;
-
+use Tweets\Domain\Model\Tweet\TweetConfiguration;
 use Tweets\Infrastructure\Service\JsonTransformer;
-use Tweets\Infrastructure\Transformer\TweetListTransformer;
 use Tweets\Infrastructure\Transformer\InReplyTransformer;
+use Tweets\Infrastructure\Transformer\TweetListTransformer;
+
 
 class TweetListService
 {
@@ -18,6 +19,11 @@ class TweetListService
     private $tweetRepository;
 
     /**
+     * @var TweetConfiguration
+     */
+    private $tweetConfiguration;
+
+    /**
      * @var JsonTransformer
      */
     private $jsonTransformer;
@@ -25,13 +31,16 @@ class TweetListService
     /**
      * TweetListService constructor.
      * @param TweetRepository $tweetRepository
+     * @param TweetConfiguration $tweetConfiguration
      * @param JsonTransformer $jsonTransformer
      */
     public function __construct(
         TweetRepository $tweetRepository,
+        TweetConfiguration $tweetConfiguration,
         JsonTransformer $jsonTransformer
     ) {
         $this->tweetRepository = $tweetRepository;
+        $this->tweetConfiguration = $tweetConfiguration;
         $this->jsonTransformer = $jsonTransformer;
     }
 
@@ -43,7 +52,7 @@ class TweetListService
         $tweetsArray = [];
 
         try{
-            $tweets = $this->tweetRepository->findLast(10);
+            $tweets = $this->tweetRepository->findLast($this->tweetConfiguration->getQuantity());
 
             foreach($tweets as $tweet){
                 if(!empty($tweet->getInReply())) {

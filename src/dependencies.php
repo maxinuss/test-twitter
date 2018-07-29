@@ -1,7 +1,6 @@
 <?php
 declare(strict_types=1);
 
-use Doctrine\Common\Cache\CacheProvider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Tools\Setup;
@@ -13,8 +12,9 @@ use Monolog\Processor\UidProcessor;
 
 use Tweets\Application\ErrorHandler;
 use Tweets\Domain\Model\Tweet\TweetRepository;
-use Tweets\Infrastructure\Domain\Model\Tweet\DoctrineMysqlTweetRepository;
+use Tweets\Domain\Model\Tweet\TweetConfiguration;
 use Tweets\Infrastructure\Service\JsonTransformer;
+use Tweets\Infrastructure\Domain\Model\Tweet\DoctrineMysqlTweetRepository;
 
 $container = [];
 $container['settings'] = [
@@ -37,8 +37,18 @@ $container['settings'] = [
         'user' => getenv('DB_USERNAME'),
         'password' => getenv('DB_PASSWORD'),
         'dbname' => getenv('DB_NAME'),
+    ],
+    'tweets' => [
+        'quantity' => getenv('TWEETS_QUANTITY')
     ]
 ];
+
+$container[TweetConfiguration::class] = function ($c) {
+    $settings = $c->get('settings');
+    return new TweetConfiguration(
+        (int) $settings['tweets']['quantity']
+    );
+};
 
 $container['errorHandler'] = function ($c) {
     return new ErrorHandler($c->get('logger'), $c->get('settings')['displayErrorDetails']);
