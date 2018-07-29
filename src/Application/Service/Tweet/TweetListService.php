@@ -46,10 +46,10 @@ class TweetListService
             $tweets = $this->tweetRepository->findLast(10);
 
             foreach($tweets as $tweet){
-                if(!empty($tweet->inReply)) {
+                if(!empty($tweet->getInReply())) {
                     $tweetsArray[] = array_merge(
                         $this->jsonTransformer->formatItem($tweet, new TweetListTransformer()),
-                        array('in_reply' => $this->jsonTransformer->formatCollection($tweet->getInReply(), new InReplyTransformer()))
+                        array('in_reply' => $this->jsonTransformer->formatItem($tweet, new InReplyTransformer()))
                     );
                 } else {
                     $tweetsArray[] = $this->jsonTransformer->formatItem($tweet, new TweetListTransformer());
@@ -61,8 +61,6 @@ class TweetListService
             ];
         }
 
-        return [
-            $tweetsArray
-        ];
+        return $tweetsArray;
     }
 }

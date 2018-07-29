@@ -11,6 +11,7 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Monolog\Processor\UidProcessor;
 
+use Tweets\Application\ErrorHandler;
 use Tweets\Domain\Model\Tweet\TweetRepository;
 use Tweets\Infrastructure\Domain\Model\Tweet\DoctrineMysqlTweetRepository;
 use Tweets\Infrastructure\Service\JsonTransformer;
@@ -38,6 +39,19 @@ $container['settings'] = [
         'dbname' => getenv('DB_NAME'),
     ]
 ];
+
+$container['errorHandler'] = function ($c) {
+    return new ErrorHandler($c->get('logger'), $c->get('settings')['displayErrorDetails']);
+};
+$container['phpErrorHandler'] = function ($c) {
+    return $c->get('errorHandler');
+};
+$container['notFoundHandler'] = function ($c) {
+    return [$c->get('errorHandler'), 'handleNotFound'];
+};
+$container['notAllowedHandler'] = function ($c) {
+    return [$c->get('errorHandler'), 'handleNotAllowed'];
+};
 
 $container[JsonTransformer::class] = function ($c) {
     $manager = new Manager();
