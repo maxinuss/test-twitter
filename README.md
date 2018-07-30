@@ -79,6 +79,8 @@ make down
 8) Execute ``` mysql -p ``` when ask for password use root
 9) Select testing_twitter database
 10) Copy script from /docker/mysql/sql/init.sql and run it from console
+11) Create ``` cache ``` and ``` logs ``` folders. By Default must be created inside /public but you can change the path in .env file.
+12) ``` chmod -R 777 public/cache ``` and ``` chmod -R 777 public/logs ```
 
 ###### Windows 10
 1) Install Docker
