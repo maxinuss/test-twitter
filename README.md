@@ -32,6 +32,9 @@ in_reply: si fuese una respuesta a otro usuario.
 * Unit Tests are a big plus!
 * All added value you can give to the original idea is highly appreciated
 
+#### Suppositions
+* Tweets are loaded in a database by external process.
+
 ## Project
 
 #### Folder structure
